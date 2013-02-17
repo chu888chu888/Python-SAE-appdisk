@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<title> {% block title %} {% endblock %} - AppDisk - SAE 在线存储  </title>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+<!-- <link rel="stylesheet" type="text/css" href="http://lib.sinaapp.com/js/jquery-ui/1.8.9/themes/base/jquery-ui.css" /> -->
+<link rel="stylesheet" type="text/css" href="{% static "appdisk/css/demo.css" %}" />
+<link rel="icon" type="image/png" href="{% static "appdisk/img/favicon.ico?t=1" %}" />
+
+{% block extra_style %}{% endblock %}
+</head>
+
+<body>
+<div id="wrapper">
+  <div id="header">
+    <div id="logo">
+      <p>
+        <a href="{% url appdisk_files %}">
+          <img id="logo-img" src="{% static "appdisk/img/logo.png" %}" alt="Appdisk" />
+        </a>
+        <p class="logo-text"><span>Appdisk</span></p>
+      </p>
+    </div>
+  </div>
+
+  <div id="notify-container" class="hide">
+    <span id="notify-msg"></span>
+  </div>
+  
+
+  <div id="main">
+    {% block main %}{% endblock %}
+  </div>
+  <div id="footer">
+  </div>
+</div>
+{% block extra_script %}{% endblock %}
+</body>
+</html>

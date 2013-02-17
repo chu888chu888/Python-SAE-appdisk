@@ -1,0 +1,104 @@
+{% extends "appdisk/base.html" %}
+{% load static %}
+{% block title %} Appdisk {% endblock %}
+
+{% block main %}
+<div id="ops-wrapper">
+  <div id="dir-nav">
+    <a href="{% url appdisk_files %}">
+      <span>Appdisk</span>
+    </a>
+    <span id="navlinks">
+      {% for name, fullpath in navlinks %}
+      <span class="nav-arrow">&gt;</span>
+      <a href="{% url appdisk_files %}?p={{ fullpath|urlencode }}">{{ name }}</a>
+      {% endfor %}
+    </span>
+  </div>
+
+  <ul id="ops">
+    <li><button class="op-btn" id="upload-btn">上传文件</button></li>
+    <li><button class="op-btn" id="newdir-btn">新建文件夹</button></li>
+    <span class="clr"></span>
+  </ul>
+</div>
+
+<div id="file-table-wrapper">
+  <table id="file-table">
+    <thead>
+      <tr>
+        <th width="40%">文件名</th>
+        <th width="15%">类型</th>
+        <th width="10%">大小</th>
+        <th width="25%">更新日期</th>
+        <th width="10%">操作</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% if not files %}
+      {% else %}
+      {% for file in files %}
+      <tr fileName="{{ file.name }}"
+          {% if file.isDir %}
+          isDir="true"
+          {% else %}
+          isDir="false"
+          {% endif %}
+          fullpath="{{ file.fullpath }}">
+        <td class="file-name">
+          {% if file.isDir %}
+          <a class="subdir" href="{% url appdisk_files %}?p={{ file.fullpath|urlencode }}">{{ file.name }}</a>
+          {% else %}
+          {{ file.name }}
+          {% endif %}
+        </td>
+        <td class="file-type">
+          {% if file.isDir %}文件夹{% else %}文件{% endif %}
+        </td>
+        <td class="file-size">
+          {% if not file.isDir %}
+          {{ file.size }}
+          {% endif %}
+        </td>
+        <td class="file-ctime">{{ file.ctime }}</td>
+        <td class="file-op">
+          {% if not file.isDir %}
+          <button><a href="{{ file.url }}" title="下载" target="_blank">下载</a></button>
+          {% endif %}
+          <button class="file-op-del">删除</button>
+        </td>
+      </tr>
+      {% endfor %}
+      {% endif %}
+    </tbody>
+  </table>
+</div>
+
+{% endblock %}
+
+{% block extra_script %}
+{% if SAE or USE_COMPILED_JS %}
+<script type="text/javascript" src="{% static "appdisk/js/appdisk-compiled.js" %}"></script>
+{% else %}
+<script type="text/javascript" src="{% static "appdisk/closure-library/closure/goog/base.js" %}" ></script>
+<script type="text/javascript" src="{% static "appdisk/js/appdisk-deps.js" %}" ></script>
+<script type="text/javascript">
+    goog.require('appdisk');
+</script>
+{% endif %}
+<script type="text/javascript">
+  var SAE = {% if SAE %} true {% else %} false {% endif %};
+</script>
+<script type="text/javascript">
+  var csrftoken = "{% csrf_token %}";
+  var conf = {
+    PATH: '{{ path }}',
+    NEWDIR_URL: '{% url appdisk_newdir %}?p={{ path|urlencode }}',
+    UPLOAD_URL: '{% url appdisk_upload %}?p={{ path|urlencode }}',
+    REMOVE_URL: '{% url appdisk_remove %}'
+  };
+
+  appdisk.entry(conf);
+</script>
+
+{% endblock %}

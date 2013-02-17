@@ -1,0 +1,281 @@
+/* @global reset */
+html, body, h1, h2, h3, h4, h5, h6, p, ol, ul, li, pre, code, address, variable, form, fieldset, blockquote {
+ padding: 0;
+ margin: 0;
+ font-size: 100%;
+ font-weight: normal;
+}
+ol, ul { list-style: none; }
+
+body {
+    font: 14px/150% Arial,Verdana,"宋体b8b\4f53";
+    font-family: 'Open Sans', 'lucida grande', 'Segoe UI', arial, verdana, 'lucida sans unicode', tahoma, sans-serif, simsun, 'WenQuanYi Micro Hei Mono';
+    color: #333;
+}
+
+a {
+    text-decoration: none;
+    color: #1F8CE6;
+}
+
+h1 {
+    font-size:1.9em;
+    margin:1.1em 0 0.5em;
+}
+h2 { font-size:1.5em; color:#222;}
+h3 { font-size:1.2em; color:#322; font-weight:normal; margin:0.95em 0 0.4em; }
+h4 { font-size:1.1em; color:#222; font-weight:normal; margin:0.5em 0 0.2em; }
+h5, h6 {
+    font-size:1em;
+    margin:0.4em 0 0.15em;
+}
+
+/* @general sytles */
+.hide { display:none; }
+.fleft { float: left; }
+.error { color:red; }
+.clear { clear: both;}
+.ovhd { overflow:hidden; }
+.clr {
+    display: block;
+    overflow: hidden;
+    clear: both;
+    height: 0;
+    line-height: 0;
+    font-size: 0;
+}
+
+/* modal dialog */
+.modal-dialog-bg {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    background-color: #FFF;
+}
+
+.modal-dialog {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 500px;
+    background-color: #AAF;
+    border: 2px solid #99c0ff;
+    font-size: inherit;
+}
+
+.modal-dialog-title {
+    position:relative;
+    background: #C3D9FF;
+    padding: 4px;
+    font-weight: bold;
+    cursor: default;
+}
+
+.modal-dialog-content {
+    background: #E8EEF7;
+    padding: 12px 18px 12px 18px;
+}
+
+.modal-dialog-userInput {
+    padding: 3px 0px 3px 3px;
+    width: 90%;
+}
+
+.modal-dialog-buttons {
+    background: #E8EEF7;
+    padding: 4px;
+    text-align: right;
+}
+
+.modal-dialog-buttons button {
+    margin: 5px;
+}
+
+/* base template rules */
+#main {
+    overflow: hidden;
+}
+
+#header {
+    height: 60px;
+    background: #FFF;
+    margin-bottom: 5px;
+}
+
+#logo {
+    overflow: hidden;
+}
+
+#logo-img {
+    float: left;
+}
+
+.logo-text {
+    padding: 20px 0 0 10px;
+    font-size: 27px;
+    color: #666;
+    overflow: hidden;
+}
+
+.logo-text span {
+    vertical-align: 30px;
+}
+
+#ops-wrapper
+{
+    overflow: hidden;
+    background: #EBEFF9;
+    border-bottom: 1px solid #6B90DA;
+    padding-left: 10px;
+    margin-bottom: 10px;
+}
+
+#dir-nav {
+    float: left;
+    width: 60%;
+    margin: 10px 0;
+    font-size: 18px;
+}
+
+#dir-nav a,
+#dir-nave span {
+    vertical-align: top;
+}
+
+.nav-arrow {
+    color: #1F8CE6;
+}
+
+#ops {
+    float:right;
+    margin: 0 20px 0 20px;
+    overflow: hidden;
+}
+
+#ops li {
+    display: inline-block;
+    float: left;
+    margin: 10px 5px 5px 5px;
+}
+
+.op-btn {
+    font-size: 14px;
+}
+
+#footer {
+    clear: both;
+}
+
+#notify-container {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    padding: 3px;
+    text-align: center;
+    background-color: #52F28D;
+}
+
+#notify-msg {
+    font-size: 15px;
+    font-weight: bold;
+}
+
+/* page specific rules */
+#file-table {
+    table-layout: fixed;
+    width: 900px;
+    margin: auto;
+    border-collapse: collapse;
+}
+
+#file-table th, td {
+    text-align: left;
+}
+
+#file-table th {
+    padding: 0 5px 10px 5px;
+    border-bottom: 1px solid #CCC;
+}
+
+#file-table td {
+    padding: 10px 5px 10px 5px;
+    border-bottom: 1px solid #EEE;
+}
+
+#file-table th {
+    font-size: 18px;
+}
+
+#file-table td {
+    font-size: 16px;
+}
+
+.file-type,
+.file-size,
+.file-ctime,
+.file-op {
+    color: #555;
+}
+
+.file-op a, .file-op button {
+    color: #555;
+    cursor: pointer;
+}
+
+#upload-file-form-wrapper,
+#newdir-form-wrapper {
+    width: 600px;
+    margin: auto;
+    margin-top: 100px;
+    border: 2px solid #99C0FF;
+}
+
+#upload-file-form,
+#newdir-form {
+    background-color: #E8EEF7;
+    font-size: 16px;
+}
+
+#upload-file-form input,
+#newdir-form input
+{
+    font-size: 20px;
+    padding: 3px 0;
+}
+
+.upload-text,
+.newdir-text {
+    font-size: 20px;
+    background-color: #C3D9FF;
+    padding: 8px;
+}
+
+.path {
+    font-style: italic;
+    font-weight: bold;
+    padding: 0 5px;
+}
+
+.form-row {
+    margin-bottom: 10px;
+}
+
+.form-row label {
+    display: block;
+    float: left;
+    width: 4em;
+    text-align: right;
+    margin-right: 10px;
+}
+
+.error-container {
+    width: 600px;
+    margin: auto;
+    margin-top: 100px;
+    font-size: 20px;
+}
+
+#file-table-wrapper {
+    margin-top: 10px;
+    padding: 0 20px;
+}

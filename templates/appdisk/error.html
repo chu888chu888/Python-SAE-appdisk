@@ -1,0 +1,11 @@
+{% extends "appdisk/base.html" %}
+{% load url from future %}
+{% load static %}
+
+{% block title %} 出错了... {% endblock %}
+
+{% block main %}
+<div class="error-container">
+  <p>{{ error_msg }}</p>
+</div>
+{% endblock %}
